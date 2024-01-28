@@ -26,3 +26,10 @@ class Password:
             return choice(list(name)).upper()
         else:
             raise PasswordError("It is not name)")
+
+    @staticmethod
+    def color(string: str) -> str:
+        if string.isalpha():
+            return str(sum(map(ord, list(string))))
+        else:
+            raise PasswordError("It`s not color!")

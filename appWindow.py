@@ -26,6 +26,13 @@ def loop():
             label_for_result.pack()
             counter += 1
             entry_for_password.delete(first=0, last=END)
+            label_for_password['text'] = 'Write any color'
+        elif counter == 2:
+            mass.append(Password.color(entry_for_password.get()))
+            label_for_result['text'] = 'OK!'
+            label_for_result.pack()
+            counter += 1
+            entry_for_password.delete(first=0, last=END)
             label_for_password['text'] = ''
     except PasswordError as e:
         label_for_result['text'] = f'User Error!\n{e}'
