@@ -10,30 +10,25 @@ counter = 0
 mass = []
 
 
+def changing(func, message):
+    global counter
+    mass.append(func)
+    label_for_result['text'] = 'OK!'
+    label_for_result.pack()
+    counter += 1
+    entry_for_password.delete(first=0, last=END)
+    label_for_password['text'] = message
+
+
 def loop():
     global counter
     try:
         if counter == 0:
-            mass.append(Password.matrix(entry_for_password.get()))
-            label_for_result['text'] = 'OK!'
-            label_for_result.pack()
-            counter += 1
-            entry_for_password.delete(first=0, last=END)
-            label_for_password['text'] = 'Now write the name of your favorite actor'
+            changing(Password.matrix(entry_for_password.get()), 'Now write the name of your favorite actor')
         elif counter == 1:
-            mass.append(Password.actor(entry_for_password.get()))
-            label_for_result['text'] = 'OK!'
-            label_for_result.pack()
-            counter += 1
-            entry_for_password.delete(first=0, last=END)
-            label_for_password['text'] = 'Write any color'
+            changing(Password.actor(entry_for_password.get()), 'Write any color')
         elif counter == 2:
-            mass.append(Password.color(entry_for_password.get()))
-            label_for_result['text'] = 'OK!'
-            label_for_result.pack()
-            counter += 1
-            entry_for_password.delete(first=0, last=END)
-            label_for_password['text'] = ''
+            changing(Password.color(entry_for_password.get()), 'Come on, write down the name of your favorite animal')
     except PasswordError as e:
         label_for_result['text'] = f'User Error!\n{e}'
         label_for_result.pack()
