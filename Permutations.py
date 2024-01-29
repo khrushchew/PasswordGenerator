@@ -1,3 +1,5 @@
+import random
+
 from passKeyСipher import charToNum
 from math import fabs
 from classesOfExceptions import PasswordError
@@ -33,3 +35,8 @@ class Password:
             return str(sum(map(ord, list(string))))
         else:
             raise PasswordError("It`s not color!")
+
+    @staticmethod
+    def result(massive: list) -> str:
+        random.shuffle(massive)
+        return "".join(massive)

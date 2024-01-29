@@ -18,7 +18,9 @@ def changing(func, message):
     counter += 1
     entry_for_password.delete(first=0, last=END)
     label_for_password['text'] = message
-
+    if counter == 3:
+        entry_for_password.insert(0, Password.result(mass))
+        button_for_click['text'] = 'Bye!'
 
 def loop():
     global counter
@@ -28,7 +30,7 @@ def loop():
         elif counter == 1:
             changing(Password.actor(entry_for_password.get()), 'Write any color')
         elif counter == 2:
-            changing(Password.color(entry_for_password.get()), 'Come on, write down the name of your favorite animal')
+            changing(Password.color(entry_for_password.get()), 'Nice, your password:')
     except PasswordError as e:
         label_for_result['text'] = f'User Error!\n{e}'
         label_for_result.pack()
